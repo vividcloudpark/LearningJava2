@@ -2,6 +2,7 @@ package hello.core;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
+import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
@@ -10,7 +11,7 @@ import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
 public class AppConfig {
-
+//APpCofig 사용으로 사용영역과 구성영역이분리되었다
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());
     }//생성자주입 생성자를통해 인스턴스를주입 (Injection)
@@ -24,7 +25,8 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
+//        return new FixDiscountPolicy();
     }
 
 
