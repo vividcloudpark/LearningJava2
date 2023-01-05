@@ -9,21 +9,29 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class AppConfig {
 //APpCofig 사용으로 사용영역과 구성영역이분리되었다
+
+    @Bean
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());
     }//생성자주입 생성자를통해 인스턴스를주입 (Injection)
 
-    private MemberRepository memberRepository() {
+    @Bean
+    public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public OrderService orderService(){//의존관계를 외부에서 주입해주는것처럼행동  이것이  바로 의존성주입
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    @Bean
     public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
 //        return new FixDiscountPolicy();
