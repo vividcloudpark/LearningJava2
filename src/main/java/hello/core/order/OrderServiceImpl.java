@@ -24,8 +24,11 @@ public class OrderServiceImpl implements OrderService{
         int discountPrice = discountPolicy.discount(member, itemPrice); //단일 책임원칙을 잘지킨사례
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
 
-
+    //테스트용
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
     }
 
 }

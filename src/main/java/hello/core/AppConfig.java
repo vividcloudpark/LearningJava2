@@ -18,16 +18,20 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }//생성자주입 생성자를통해 인스턴스를주입 (Injection)
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
-    public OrderService orderService(){//의존관계를 외부에서 주입해주는것처럼행동  이것이  바로 의존성주입
+    public OrderService orderService(){
+        System.out.println("AppConfig.orderService");
+        //의존관계를 외부에서 주입해주는것처럼행동  이것이  바로 의존성주입
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
