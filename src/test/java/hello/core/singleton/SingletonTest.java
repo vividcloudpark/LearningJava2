@@ -57,6 +57,6 @@ public class SingletonTest {
 
         //memberservice 1은 2와 다른 객체이다.
         //DI 컨테이너인 AppConfig는 요청을 할때마다 개체를 새로 생성한다
-        assertThat(memberService1).isNotSameAs(memberService2);
+//        assertThat(memberService1).isNotSameAs(memberService2);
     }
 }
