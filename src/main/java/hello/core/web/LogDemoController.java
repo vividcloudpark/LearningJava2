@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
-    private final Provider<MyLogger> myLoggerProvider; //고객이 나오기도 전에 (HTTP 요청이 오기도 전에) 생성자가 내놓으라고 하니까
+    private final MyLogger myLogger; //고객이 나오기도 전에 (HTTP 요청이 오기도 전에) 생성자가 내놓으라고 하니까
 
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) {
         String requestURL = request.getRequestURL().toString();
-        MyLogger myLogger = myLoggerProvider.get();
+
+        System.out.println(myLogger.getClass());
         myLogger.setRequestURL(requestURL);
         myLogger.log("controller test");
         logDemoService.logic("testId");
